@@ -153,6 +153,39 @@ class MainActivity : AppCompatActivity() {
 
    private fun resetGame()
     {
+        player1Options.clear()
+        player2Options.clear()
+        allDisabledImages.clear()
+        winnerofGame = WinnerOfGame.NoOne
+        playingPlayer = PlayingPlayer.Player1
+
+        imgButton1.setImageResource(R.drawable.place_holder)
+        imgButton3.setImageResource(R.drawable.place_holder)
+        ImgButton2.setImageResource(R.drawable.place_holder)
+        imgButton4.setImageResource(R.drawable.place_holder)
+        ImgButton5.setImageResource(R.drawable.place_holder)
+        imgButton6.setImageResource(R.drawable.place_holder)
+        imgButton7.setImageResource(R.drawable.place_holder)
+        ImgButton8.setImageResource(R.drawable.place_holder)
+        imgButton9.setImageResource(R.drawable.place_holder)
+
+        imgButton9.isEnabled = true
+        imgButton7.isEnabled = true
+        imgButton6.isEnabled = true
+        imgButton4.isEnabled = true
+        imgButton3.isEnabled = true
+        ImgButton8.isEnabled = true
+        ImgButton2.isEnabled = true
+        ImgButton5.isEnabled = true
+        imgButton1.isEnabled = true
+
+
+
+    }
+
+
+    private fun checkDraw()
+    {
 
     }
 
