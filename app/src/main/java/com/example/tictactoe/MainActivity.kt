@@ -23,6 +23,7 @@ class MainActivity : AppCompatActivity() {
     var winnerofGame:WinnerOfGame? = null
 
     var player1Options:ArrayList<Int> = ArrayList()
+    var player2Options:ArrayList<Int> = ArrayList()
     var allDisabledImages:ArrayList<ImageButton?> = ArrayList()
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -81,6 +82,15 @@ class MainActivity : AppCompatActivity() {
             selectedImageButton.isEnabled = false
             allDisabledImages.add(selectedImageButton)
             playingPlayer = PlayingPlayer.Player2
+        }
+
+        else if(playingPlayer == PlayingPlayer.Player2)
+        {
+            selectedImageButton.setImageResource(R.drawable.o_icon)
+            player2Options.add(optionNumber)
+            selectedImageButton.isEnabled = false
+            allDisabledImages.add(selectedImageButton)
+            playingPlayer = PlayingPlayer.Player1
         }
     }
 
