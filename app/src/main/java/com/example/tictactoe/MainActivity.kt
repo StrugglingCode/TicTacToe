@@ -127,13 +127,15 @@ class MainActivity : AppCompatActivity() {
         if (winnerofGame == WinnerOfGame.Player1) {
             createAlert("Player 1 Wins", "Congratulations to Player 1",
                 AlertDialog.BUTTON_POSITIVE, "Ok", false)
-            return
+            return     //return because we dont want to execute checkdraw function
         }
         else if (winnerofGame == WinnerOfGame.Player2)
         {
             createAlert("Player 2 Wins", "Congratulations to Player 2",
                 AlertDialog.BUTTON_POSITIVE, "Ok", false)
+                return
         }
+        checkDraw()
 
 
 }
@@ -186,7 +188,10 @@ class MainActivity : AppCompatActivity() {
 
     private fun checkDraw()
     {
-
+        if(allDisabledImages.size == 9 && winnerofGame!=WinnerOfGame.Player1 && winnerofGame!= WinnerOfGame.Player2)
+        {
+               createAlert("DRAW","No one won the game",AlertDialog.BUTTON_POSITIVE,"Ok",false)
+        }
     }
 
 
