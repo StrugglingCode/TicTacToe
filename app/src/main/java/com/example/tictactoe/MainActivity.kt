@@ -8,8 +8,10 @@ import android.support.v7.app.AlertDialog
 import android.view.View
 import android.widget.ImageButton
 import kotlinx.android.synthetic.main.activity_main.*
+import java.lang.Exception
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity()
+{
     enum class PlayingPlayer {
         Player1, Player2
     }
@@ -17,11 +19,10 @@ class MainActivity : AppCompatActivity() {
     enum class WinnerOfGame {
         Player1, Player2, NoOne
     }
-//instance varibale
 
+//instance varibale
     var playingPlayer: PlayingPlayer? = null
     var winnerofGame: WinnerOfGame? = null
-
     var player1Options: ArrayList<Int> = ArrayList()
     var player2Options: ArrayList<Int> = ArrayList()
     var allDisabledImages: ArrayList<ImageButton?> = ArrayList()
@@ -70,20 +71,78 @@ class MainActivity : AppCompatActivity() {
 
     }
 
-    private fun action(optionNumber: Int, selectedImageButton: ImageButton) {
+    private fun action(optionNumber: Int, _selectedImageButton: ImageButton) {
+
+        var selectedImageButton = _selectedImageButton
+
         if (playingPlayer == PlayingPlayer.Player1) {
             selectedImageButton.setImageResource(R.drawable.x_icon)
             player1Options.add(optionNumber)
             selectedImageButton.isEnabled = false
             allDisabledImages.add(selectedImageButton)
             playingPlayer = PlayingPlayer.Player2
-        } else if (playingPlayer == PlayingPlayer.Player2) {
-            selectedImageButton.setImageResource(R.drawable.o_icon)
-            player2Options.add(optionNumber)
-            selectedImageButton.isEnabled = false
-            allDisabledImages.add(selectedImageButton)
-            playingPlayer = PlayingPlayer.Player1
         }
+
+        else if (playingPlayer == PlayingPlayer.Player2) {
+            //code for player 2
+            selectedImageButton.setImageResource(R.drawable.o_icon)
+           player2Options.add(optionNumber)
+           selectedImageButton.isEnabled = false
+           allDisabledImages.add(selectedImageButton)
+          playingPlayer = PlayingPlayer.Player1
+
+            //code for player 2 as computer
+//            if (playingPlayer == PlayingPlayer.Player2) {
+//             var notSelectedImage:ArrayList<Int> = ArrayList()    //holds not selected imagesnumbers of imageButton
+//              for(imageNumber in 1..9)
+//            {
+//                     if(!(player1Options.contains(imageNumber)))
+//                     {
+//                         if(!(player2Options.contains(imageNumber))){
+//
+//                             notSelectedImage.add(imageNumber)
+//                     }
+//                }
+//            }
+//
+//            try {
+//                var randomNumber = (Math.random() * notSelectedImage.size).toInt()
+//                var imageNumber = notSelectedImage[randomNumber]
+//
+//                when(imageNumber)
+//                {
+//                    1 -> selectedImageButton = imgButton1
+//                    2 -> selectedImageButton = ImgButton2
+//                    3 -> selectedImageButton = imgButton3
+//                    4 -> selectedImageButton = imgButton4
+//                    5 -> selectedImageButton = ImgButton5
+//                    6 -> selectedImageButton = imgButton6
+//                    7 -> selectedImageButton = imgButton7
+//                    8 -> selectedImageButton = ImgButton8
+//                    9 -> selectedImageButton = imgButton9
+//                }
+//
+//                selectedImageButton.setImageResource(R.drawable.o_icon)
+//                player2Options.add(imageNumber)
+//                selectedImageButton.isEnabled = false
+//                allDisabledImages.add(selectedImageButton)
+//                playingPlayer = PlayingPlayer.Player1
+//
+//
+//
+//                }
+//                catch (e:Exception)
+//                {
+//                    e.printStackTrace()
+//            }
+
+
+
+
+
+        }
+
+
 
         winnerOfGame()
     }
