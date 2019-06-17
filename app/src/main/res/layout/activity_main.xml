@@ -5,12 +5,12 @@
         xmlns:app="http://schemas.android.com/apk/res-auto"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".MainActivity" android:gravity="center">
+        tools:context=".MainActivity" android:gravity="center" android:id="@+id/tableLayout">
     <TableRow
             android:layout_width="match_parent"
             android:layout_height="wrap_content" android:gravity="center">
         <TextView
-                android:text="Tic Tac Toe"
+                android:text="Tic Tac Toe Game"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" android:id="@+id/textView" android:gravity="center"
                 android:textSize="30sp"/>
@@ -20,47 +20,56 @@
             android:layout_height="wrap_content" android:gravity="center">
         <ImageButton
                 android:layout_width="0dp"
-                android:layout_height="wrap_content" app:srcCompat="@mipmap/ic_launcher_round"
-                android:id="@+id/imageButton3" android:layout_weight="1"/>
+                android:layout_height="120dp" app:srcCompat="@drawable/place_holder"
+                android:id="@+id/imgButton1" android:layout_weight="1" android:scaleType="fitCenter"
+                android:adjustViewBounds="true" android:onClick="imageButtonTapped"/>
         <ImageButton
                 android:layout_width="0dp"
-                android:layout_height="wrap_content" app:srcCompat="@mipmap/ic_launcher_round"
-                android:id="@+id/imageButton2" android:layout_weight="1"/>
+                android:layout_height="120dp" app:srcCompat="@drawable/place_holder"
+                android:id="@+id/ImgButton2" android:layout_weight="1" android:scaleType="fitCenter"
+                android:adjustViewBounds="true" android:onClick="imageButtonTapped"/>
         <ImageButton
                 android:layout_width="0dp"
-                android:layout_height="wrap_content" app:srcCompat="@mipmap/ic_launcher_round"
-                android:id="@+id/imageButton" android:layout_weight="1"/>
+                android:layout_height="120dp" app:srcCompat="@drawable/place_holder"
+                android:id="@+id/imgButton3" android:layout_weight="1" android:scaleType="fitCenter"
+                android:adjustViewBounds="true" android:onClick="imageButtonTapped"/>
     </TableRow>
     <TableRow
             android:layout_width="match_parent"
             android:layout_height="wrap_content" android:gravity="center">
         <ImageButton
                 android:layout_width="0dp"
-                android:layout_height="wrap_content" app:srcCompat="@mipmap/ic_launcher_round"
-                android:id="@+id/imageButton3" android:layout_weight="1"/>
+                android:layout_height="120dp" app:srcCompat="@drawable/place_holder"
+                android:id="@+id/imgButton4" android:layout_weight="1" android:scaleType="fitCenter"
+                android:adjustViewBounds="true" android:onClick="imageButtonTapped"/>
         <ImageButton
                 android:layout_width="0dp"
-                android:layout_height="wrap_content" app:srcCompat="@mipmap/ic_launcher_round"
-                android:id="@+id/imageButton2" android:layout_weight="1"/>
+                android:layout_height="120dp" app:srcCompat="@drawable/place_holder"
+                android:id="@+id/ImgButton5" android:layout_weight="1" android:scaleType="fitCenter"
+                android:adjustViewBounds="true" android:onClick="imageButtonTapped"/>
         <ImageButton
                 android:layout_width="0dp"
-                android:layout_height="wrap_content" app:srcCompat="@mipmap/ic_launcher_round"
-                android:id="@+id/imageButton" android:layout_weight="1"/>
+                android:layout_height="120dp" app:srcCompat="@drawable/place_holder"
+                android:id="@+id/imgButton6" android:layout_weight="1" android:scaleType="fitCenter"
+                android:adjustViewBounds="true" android:onClick="imageButtonTapped"/>
     </TableRow>
     <TableRow
             android:layout_width="match_parent"
             android:layout_height="wrap_content" android:gravity="center">
         <ImageButton
                 android:layout_width="0dp"
-                android:layout_height="wrap_content" app:srcCompat="@mipmap/ic_launcher_round"
-                android:id="@+id/imageButton3" android:layout_weight="1"/>
+                android:layout_height="120dp" app:srcCompat="@drawable/place_holder"
+                android:id="@+id/imgButton7" android:layout_weight="1" android:scaleType="fitCenter"
+                android:adjustViewBounds="true" android:onClick="imageButtonTapped"/>
         <ImageButton
                 android:layout_width="0dp"
-                android:layout_height="wrap_content" app:srcCompat="@mipmap/ic_launcher_round"
-                android:id="@+id/imageButton2" android:layout_weight="1"/>
+                android:layout_height="120dp" app:srcCompat="@drawable/place_holder"
+                android:id="@+id/ImgButton8" android:layout_weight="1" android:scaleType="fitCenter"
+                android:adjustViewBounds="true" android:onClick="imageButtonTapped"/>
         <ImageButton
                 android:layout_width="0dp"
-                android:layout_height="wrap_content" app:srcCompat="@mipmap/ic_launcher_round"
-                android:id="@+id/imageButton" android:layout_weight="1"/>
+                android:layout_height="120dp" app:srcCompat="@drawable/place_holder"
+                android:id="@+id/imgButton9" android:layout_weight="1" android:scaleType="fitCenter"
+                android:adjustViewBounds="true" android:onClick="imageButtonTapped"/>
     </TableRow>
 </TableLayout>
