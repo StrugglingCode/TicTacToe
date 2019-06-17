@@ -1,5 +1,6 @@
 package com.example.tictactoe
 
+import android.content.DialogInterface
 import android.graphics.Color
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
@@ -123,19 +124,37 @@ class MainActivity : AppCompatActivity() {
             winnerofGame = WinnerOfGame.Player2
         }
 
-
-
         if (winnerofGame == WinnerOfGame.Player1) {
-            createAlert("Player 1 Wins", "Congratulations to Player 1", AlertDialog.BUTTON_POSITIVE, "Ok", false)
+            createAlert("Player 1 Wins", "Congratulations to Player 1",
+                AlertDialog.BUTTON_POSITIVE, "Ok", false)
             return
-        } else if (winnerofGame == WinnerOfGame.Player2)
+        }
+        else if (winnerofGame == WinnerOfGame.Player2)
         {
-            createAlert("Player 2 Wins", "Congratulations to Player 2", AlertDialog.BUTTON_POSITIVE, "Ok", false)
-
-    }
+            createAlert("Player 2 Wins", "Congratulations to Player 2",
+                AlertDialog.BUTTON_POSITIVE, "Ok", false)
+        }
 
 
 }
+    private fun  createAlert(title:String,message:String,whichButton:Int,buttonText:String,cancle:Boolean)
+    {
+             val alertDialog:AlertDialog = AlertDialog.Builder(this).create()
+        alertDialog.setTitle(title)
+        alertDialog.setMessage(message)
+        alertDialog.setButton(whichButton,buttonText,{
+            dialog: DialogInterface?, which: Int ->
+            resetGame()
+        })
+
+        alertDialog.setCancelable(cancle)
+        alertDialog.show()
+    }
+
+   private fun resetGame()
+    {
+
+    }
 
 
 
