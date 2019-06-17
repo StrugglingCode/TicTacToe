@@ -3,28 +3,27 @@ package com.example.tictactoe
 import android.graphics.Color
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import android.support.v7.app.AlertDialog
 import android.view.View
 import android.widget.ImageButton
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
-    enum class PlayingPlayer
-    {
-        Player1,Player2
+    enum class PlayingPlayer {
+        Player1, Player2
     }
 
-    enum class WinnerOfGame
-    {
-        Player1,Player2,No_One
+    enum class WinnerOfGame {
+        Player1, Player2, NoOne
     }
 //instance varibale
 
-    var playingPlayer:PlayingPlayer? = null
-    var winnerofGame:WinnerOfGame? = null
+    var playingPlayer: PlayingPlayer? = null
+    var winnerofGame: WinnerOfGame? = null
 
-    var player1Options:ArrayList<Int> = ArrayList()
-    var player2Options:ArrayList<Int> = ArrayList()
-    var allDisabledImages:ArrayList<ImageButton?> = ArrayList()
+    var player1Options: ArrayList<Int> = ArrayList()
+    var player2Options: ArrayList<Int> = ArrayList()
+    var allDisabledImages: ArrayList<ImageButton?> = ArrayList()
 
     override fun onCreate(savedInstanceState: Bundle?) {
 
@@ -32,31 +31,28 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         playingPlayer = PlayingPlayer.Player1
-       // playingPlayer = PlayingPlayer.Player2
+        // playingPlayer = PlayingPlayer.Player2
     }
 
-    fun imageButtonTapped(view:View)
-    {
-        val selectedImageButton:ImageButton = view as ImageButton
-        var randomNumber = (Math.random()* 9 + 1).toInt()
+    fun imageButtonTapped(view: View) {
+        val selectedImageButton: ImageButton = view as ImageButton
+        var randomNumber = (Math.random() * 9 + 1).toInt()
         var optionNumber = 0
         //Math.random() generates value b/w 0&1
         //randomNumber generated b/w 1-9 including 9
-        when(randomNumber)
-        {
-            1-> tableLayout.setBackgroundColor(Color.GREEN)
-            2-> tableLayout.setBackgroundColor(Color.RED)
-            3-> tableLayout.setBackgroundColor(Color.YELLOW)
-            4-> tableLayout.setBackgroundColor(Color.CYAN)
-            5-> tableLayout.setBackgroundColor(Color.WHITE)
-            6-> tableLayout.setBackgroundColor(Color.DKGRAY)
-            7-> tableLayout.setBackgroundColor(Color.LTGRAY)
-            8-> tableLayout.setBackgroundColor(Color.BLUE)
-            9-> tableLayout.setBackgroundColor(Color.MAGENTA)
+        when (randomNumber) {
+            1 -> tableLayout.setBackgroundColor(Color.GREEN)
+            2 -> tableLayout.setBackgroundColor(Color.RED)
+            3 -> tableLayout.setBackgroundColor(Color.YELLOW)
+            4 -> tableLayout.setBackgroundColor(Color.CYAN)
+            5 -> tableLayout.setBackgroundColor(Color.WHITE)
+            6 -> tableLayout.setBackgroundColor(Color.DKGRAY)
+            7 -> tableLayout.setBackgroundColor(Color.LTGRAY)
+            8 -> tableLayout.setBackgroundColor(Color.BLUE)
+            9 -> tableLayout.setBackgroundColor(Color.MAGENTA)
         }
 
-        when(selectedImageButton.id)
-        {
+        when (selectedImageButton.id) {
             R.id.imgButton1 -> optionNumber = 1
             R.id.ImgButton2 -> optionNumber = 2
             R.id.imgButton3 -> optionNumber = 3
@@ -68,34 +64,78 @@ class MainActivity : AppCompatActivity() {
             R.id.imgButton9 -> optionNumber = 9
         }
 
-        action(optionNumber,selectedImageButton)
+        action(optionNumber, selectedImageButton)
 
 
     }
 
-    private fun action(optionNumber:Int,selectedImageButton:ImageButton)
-    {
-        if(playingPlayer == PlayingPlayer.Player1)
-        {
+    private fun action(optionNumber: Int, selectedImageButton: ImageButton) {
+        if (playingPlayer == PlayingPlayer.Player1) {
             selectedImageButton.setImageResource(R.drawable.x_icon)
             player1Options.add(optionNumber)
             selectedImageButton.isEnabled = false
             allDisabledImages.add(selectedImageButton)
             playingPlayer = PlayingPlayer.Player2
-        }
-
-        else if(playingPlayer == PlayingPlayer.Player2)
-        {
+        } else if (playingPlayer == PlayingPlayer.Player2) {
             selectedImageButton.setImageResource(R.drawable.o_icon)
             player2Options.add(optionNumber)
             selectedImageButton.isEnabled = false
             allDisabledImages.add(selectedImageButton)
             playingPlayer = PlayingPlayer.Player1
         }
+
+        winnerOfGame()
+    }
+
+    private fun winnerOfGame() {
+        if (player1Options.contains(1) && player1Options.contains(2) && player1Options.contains(3)) {
+            winnerofGame = WinnerOfGame.Player1
+
+        } else if (player2Options.contains(1) && player2Options.contains(2) && player2Options.contains(3)) {
+            winnerofGame = WinnerOfGame.Player2
+        } else if (player1Options.contains(4) && player1Options.contains(5) && player1Options.contains(6)) {
+            winnerofGame = WinnerOfGame.Player1
+        } else if (player2Options.contains(4) && player2Options.contains(5) && player2Options.contains(6)) {
+            winnerofGame = WinnerOfGame.Player2
+        } else if (player1Options.contains(3) && player1Options.contains(5) && player1Options.contains(7)) {
+            winnerofGame = WinnerOfGame.Player1
+        } else if (player2Options.contains(3) && player2Options.contains(5) && player2Options.contains(7)) {
+            winnerofGame = WinnerOfGame.Player2
+        } else if (player1Options.contains(7) && player1Options.contains(8) && player1Options.contains(9)) {
+            winnerofGame = WinnerOfGame.Player1
+        } else if (player2Options.contains(7) && player2Options.contains(8) && player2Options.contains(9)) {
+            winnerofGame = WinnerOfGame.Player2
+        } else if (player1Options.contains(1) && player1Options.contains(5) && player1Options.contains(9)) {
+            winnerofGame = WinnerOfGame.Player1
+        } else if (player2Options.contains(1) && player2Options.contains(5) && player2Options.contains(9)) {
+            winnerofGame = WinnerOfGame.Player2
+        } else if (player1Options.contains(1) && player1Options.contains(4) && player1Options.contains(7)) {
+            winnerofGame = WinnerOfGame.Player1
+        } else if (player2Options.contains(1) && player2Options.contains(4) && player2Options.contains(7)) {
+            winnerofGame = WinnerOfGame.Player2
+        } else if (player1Options.contains(2) && player1Options.contains(5) && player1Options.contains(8)) {
+            winnerofGame = WinnerOfGame.Player1
+        } else if (player2Options.contains(2) && player2Options.contains(5) && player2Options.contains(8)) {
+            winnerofGame = WinnerOfGame.Player2
+        } else if (player1Options.contains(3) && player1Options.contains(6) && player1Options.contains(9)) {
+            winnerofGame = WinnerOfGame.Player1
+        } else if (player2Options.contains(3) && player2Options.contains(6) && player2Options.contains(9)) {
+            winnerofGame = WinnerOfGame.Player2
+        }
+
+
+
+        if (winnerofGame == WinnerOfGame.Player1) {
+            createAlert("Player 1 Wins", "Congratulations to Player 1", AlertDialog.BUTTON_POSITIVE, "Ok", false)
+            return
+        } else if (winnerofGame == WinnerOfGame.Player2)
+        {
+            createAlert("Player 2 Wins", "Congratulations to Player 2", AlertDialog.BUTTON_POSITIVE, "Ok", false)
+
     }
 
 
-
+}
 
 
 
